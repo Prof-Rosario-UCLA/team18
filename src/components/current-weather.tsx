@@ -61,14 +61,14 @@ const formatTemp = (tempC: number) => `${Math.round(tempC * 9 / 5 + 32)}°`;
 
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center gap-2">
-                <Droplets className="h-4 w-4 text-blue-500" />
+                <Droplets className="h-4 w-4 text-gray-500" />
                 <div className="space-y-0.5">
                   <p className="text-sm font-medium">Humidity</p>
                   <p className="text-sm text-muted-foreground">{humidity}%</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Wind className="h-4 w-4 text-blue-500" />
+                <Wind className="h-4 w-4 text-gray-500" />
                 <div className="space-y-0.5">
                   <p className="text-sm font-medium">Wind Speed</p>
                   <p className="text-sm text-muted-foreground">{speed} m/s</p>
