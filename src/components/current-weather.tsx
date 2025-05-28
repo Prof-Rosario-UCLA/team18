@@ -47,11 +47,11 @@ const formatTemp = (tempC: number) => `${Math.round(tempC * 9 / 5 + 32)}°`;
                   Feels like {formatTemp(feels_like)}
                 </p>
                 <div className="flex gap-2 text-sm font-medium">
-                  <span className="flex items-center gap-1 text-pink-500">
+                  <span className="flex items-center gap-1 text-yellow-500">
                     <ArrowDown className="h-3 w-3" />
                     {formatTemp(temp_min)}
                   </span>
-                  <span className="flex items-center gap-1 text-pink-500">
+                  <span className="flex items-center gap-1 text-yellow-500">
                     <ArrowUp className="h-3 w-3" />
                     {formatTemp(temp_max)}
                   </span>
