@@ -45,7 +45,7 @@
   --radius: 0.625rem;
   --background: oklch(0.97 0.014 57);
   --foreground: oklch(0.5 0.054 18);
-  --card: oklch(0.94 0.03 25);       
+  --card: oklch(0.99 0.012 164); /* prev color was a soft pink: oklch(0.94 0.03 25);*/       
   --card-foreground: oklch(0.5 0.054 18);
   --popover: oklch(0.22 0.03 45);
   --popover-foreground: oklch(0.5 0.054 18);
@@ -117,4 +117,13 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear;
 }
