@@ -21,12 +21,15 @@ interface ChartData {
   feels_like: number; // "feels like" temperature
 }
 
+// temp format
+const formatTemp = (tempC: number) => `${Math.round(tempC * 9 / 5 + 32)}`;
+
 // Tooltip renderer for chart hover display
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload?.length) return null;
 
-  const temp = payload[0]?.value;
-  const feelsLike = payload[1]?.value;
+  const temp = formatTemp(payload[0]?.value);
+  const feelsLike = formatTemp(payload[1]?.value);
 
   return (
     <div className="rounded-lg border bg-background p-2 shadow-sm">
