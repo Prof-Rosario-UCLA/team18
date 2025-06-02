@@ -31,3 +31,10 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 ### 3. npm install
 
 ### 4. npm run dev
+
+## 💻 Running the server
+
+### 1. cd to src
+
+### 2. node server.js
+
