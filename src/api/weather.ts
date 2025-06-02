@@ -25,6 +25,14 @@ class WeatherAPI{
     return response.json();
   }
 
+    async search(query: string): Promise<GeocodingResponse[]> {
+      const url = this.createUrl(`${API_CONFIG.GEO}/direct`, {
+        q: query,
+        limit: "5",
+      });
+    return this.fetchData<GeocodingResponse[]>(url);
+  }
+
   async getCurrentWeather({ lat, lon }: Coordinates): Promise<WeatherData> {
     const url = this.createUrl(`${API_CONFIG.BASE_URL}/weather`, {
       lat: lat.toString(),
