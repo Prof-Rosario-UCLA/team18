@@ -1,4 +1,4 @@
-# 🌦️ Weather App
+# 🌦️ Lunite - Weather App
 
 A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and TanStack Query — powered by OpenWeather API and backed by a Node.js + Express server with database and caching.
 
@@ -7,6 +7,7 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 ## 🔧 Tech Stack
 
 **Frontend:**
+
 - React + TypeScript
 - Tailwind CSS
 - Shadcn UI
@@ -14,6 +15,7 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 - Recharts
 
 **Backend:**
+
 - Node.js + Express
 - Mongoose with MongoDB
 - Redis (for caching)
@@ -23,8 +25,9 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 ## 📦 Installation
 
 ### 1. clone the repository
+
 ### 2. cd to the root
+
 ### 3. npm install
+
 ### 4. npm run dev
-
-

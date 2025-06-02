@@ -35,18 +35,21 @@ const Header = () => {
   return ( 
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-2">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to={"/"}>
+        <Link to={"/"} className="flex items-center">
           <img 
             src="/sun_logo.png" 
             alt="Weather Tracker Logo" 
-            className={`h-30 ${spinning ? "spin" : ""}`} 
+            className={`h-27 w-27 ${spinning ? "spin" : ""}`} 
             onClick={handleSpin} 
             onAnimationEnd={handleAnimationEnd}
             style={{ cursor: "pointer" }}
           />
+          <span className="text-xl font-semibold tracking-tight">
+            Lunite
+          </span>
         </Link>
 
-        <div className="flex gap-8">
+        <div className="flex items-center gap-8">
               { !currUser ? (
                 <div>
               <button onClick={googleLogin}>Register!</button> 
