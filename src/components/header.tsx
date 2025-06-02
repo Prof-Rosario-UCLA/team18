@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/context/theme-provider";
 import { Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchBar from "./search"; 
+import { googleLogin, logOut } from "@/pages/login";
+import { auth } from "@/firebaseClient";
+import { onAuthStateChanged, type User } from "firebase/auth";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
+  const currUser = auth.currentUser;
+  const [user, setUser] = useState<User | null>(null);
 
   const [spinning, setSpinning] = useState(false);
+
+  useEffect(() => {
+    const registered = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => registered();
+  },  []);
 
   // Handler to make spin animation
   const handleSpin = () => {
@@ -35,6 +47,15 @@ const Header = () => {
         </Link>
 
         <div className="flex gap-8">
+              { !currUser ? (
+                <div>
+              <button onClick={googleLogin}>Register!</button> 
+              </div>
+              ) : ( 
+                <div>
+              <button onClick={logOut}>Logout!</button> 
+              </div>
+            )}
           {/* search */}
           <SearchBar/>
           {/* theme toggle */}
