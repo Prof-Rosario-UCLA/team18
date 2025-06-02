@@ -1,6 +1,5 @@
-import { app, auth, provider } from "../firebaseClient";
+import { auth, provider } from "../firebaseClient";
 import { signInWithPopup, signOut } from "firebase/auth";
-import Cookies from "js-cookie";
 
 const getCsrfToken = async () => {
   const res = await fetch("http://localhost:3000/csrf-token", {

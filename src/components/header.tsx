@@ -3,9 +3,10 @@ import { useTheme } from "@/context/theme-provider";
 import { Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchBar from "./search"; 
-import { googleLogin, logOut } from "@/pages/login";
+import { googleLogin, logOut } from "@/components/login";
 import { auth } from "@/firebaseClient";
 import { onAuthStateChanged, type User } from "firebase/auth";
+import { Button } from "./ui/button";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -52,11 +53,15 @@ const Header = () => {
         <div className="flex items-center gap-8">
               { !currUser ? (
                 <div>
-              <button onClick={googleLogin}>Register!</button> 
+              <Button 
+                onClick={googleLogin}>Register!
+              </Button> 
               </div>
               ) : ( 
                 <div>
-              <button onClick={logOut}>Logout!</button> 
+              <Button 
+                onClick={logOut}>Logout!
+              </Button> 
               </div>
             )}
           {/* search */}
