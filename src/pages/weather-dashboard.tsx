@@ -6,6 +6,9 @@ import { MapPin, AlertTriangle, RefreshCw } from "lucide-react";
 import { useWeatherQuery, useForecastQuery, useReverseGeocodeQuery} from "@/hooks/use-weather";
 import { CurrentWeather } from "../components/current-weather";
 import { HourlyTemperature } from "../components/hourly-temperature";
+import { WeatherInfo} from "../components/weather-info";
+import { useState, useEffect } from "react";
+import { weatherAPI } from "@/api/weather.ts";
 
 const WeatherDashboard = () => {
 const { coordinates, error: locationError, getLocation, isLoading: locationLoading } = useGeolocation();
@@ -13,6 +16,19 @@ const { coordinates, error: locationError, getLocation, isLoading: locationLoadi
 const weatherQuery = useWeatherQuery(coordinates);
 const forecastQuery = useForecastQuery(coordinates);
 const locationQuery = useReverseGeocodeQuery(coordinates);
+
+const [uvIndex, setUvIndex] = useState<number | null>(null);
+
+// Fetch uv index when coordinates change
+useEffect(() => {
+  const fetchUvIndex = async () => {
+    if (!coordinates) return;
+    const uv = await weatherAPI.getUVIndex(coordinates);
+    setUvIndex(uv);
+  };
+
+  fetchUvIndex();
+}, [coordinates]);
 
 console.log(weatherQuery.data);
 console.log(locationQuery);
@@ -111,8 +127,8 @@ return (
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 items-start">
-          {/* <WeatherDetails data={weatherQuery.data} /> */}
-          {/* <WeatherForecast data={forecastQuery.data} /> */}
+          {/* extra weather info */}
+          <WeatherInfo data={weatherQuery.data} uvi={uvIndex}/>
         </div>
       </div>
     </div>

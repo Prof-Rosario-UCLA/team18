@@ -63,8 +63,25 @@ class WeatherAPI{
     return this.fetchData<GeocodingResponse[]>(url);
   }
 
+  async getUVIndex({ lat, lon }: Coordinates): Promise<number | null> {
+    const url = new URL(`${API_CONFIG.UV_INDEX_BASE_URL}/uvi`);
+    url.searchParams.append("latitude", lat.toString());
+    url.searchParams.append("longitude", lon.toString());
 
-  
+    try {
+      console.log("Fetching UV Index from:", url.toString());
+      const response = await fetch(url.toString());
+      if (!response.ok) {
+        throw new Error(`UV Index API error: ${response.statusText}`);
+      }
+      const data = await response.json();
+      console.log("UV Index API response:", data);
+      return data?.now?.uvi ?? null;
+    } catch (error) {
+      console.error("Failed to fetch UV index", error);
+      return null;
+    }
+  }
 }
 
 export const weatherAPI = new WeatherAPI();

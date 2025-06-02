@@ -54,13 +54,19 @@ const Header = () => {
               { !currUser ? (
                 <div>
               <Button 
-                onClick={googleLogin}>Register!
+                onClick={googleLogin}
+                className="bg-chart-1 hover:bg-muted-foreground text-foreground"
+                >
+                  Register!
               </Button> 
               </div>
               ) : ( 
                 <div>
               <Button 
-                onClick={logOut}>Logout!
+                onClick={logOut}
+                className="bg-chart-1 hover:bg-muted-foreground text-foreground"
+                >
+                  Logout!
               </Button> 
               </div>
             )}

@@ -30,6 +30,9 @@ export interface WeatherData {
     sunset: number;
     country: string;
   };
+  clouds?: {
+    all: number;
+  };
   name: string;
   dt: number;
 }

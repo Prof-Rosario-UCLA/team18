@@ -5,6 +5,9 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useForecastQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { AlertTriangle } from "lucide-react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { WeatherInfo} from "../components/weather-info";
+import { useState, useEffect } from "react";
+import { weatherAPI } from "@/api/weather"; // adjust path if different
 
 const CityPage = () => {
   // Get city name from URL path param
@@ -20,6 +23,18 @@ const CityPage = () => {
   // Weather and forecast queries
   const { data: current, error: weatherError } = useWeatherQuery(position);
   const { data: hourly, error: forecastError } = useForecastQuery(position);
+
+  const [uvIndex, setUvIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchUv = async () => {
+      if (!position) return;
+      const uv = await weatherAPI.getUVIndex(position);
+      setUvIndex(uv);
+    };
+
+    fetchUv();
+  }, [position]);
 
   // Error UI
   if (weatherError || forecastError) {
@@ -43,7 +58,7 @@ const CityPage = () => {
   return (
     <main className="space-y-5 px-2">
       <header className="flex justify-between items-center">
-        <h1 className="text-3xl font-semibold tracking-tight capitalize">{cityName}</h1>
+        <h1 className="text-xl font-bold tracking-tight capitalize">{cityName}</h1>
       </header>
 
       <section className="grid gap-5">
@@ -51,6 +66,10 @@ const CityPage = () => {
         <div className="flex flex-col md:flex-row gap-6">
           <CurrentWeather data={current} />
           <HourlyTemperature data={hourly} />
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 items-start">
+          {/* extra weather info */}
+          <WeatherInfo data={current} uvi={uvIndex} />
         </div>
       </section>
     </main>
