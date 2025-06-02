@@ -21,15 +21,12 @@ interface ChartData {
   feels_like: number; // "feels like" temperature
 }
 
-// temp format
-const formatTemp = (tempC: number) => `${Math.round(tempC * 9 / 5 + 32)}`;
-
 // Tooltip renderer for chart hover display
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload?.length) return null;
 
-  const temp = formatTemp(payload[0]?.value);
-  const feelsLike = formatTemp(payload[1]?.value);
+  const temp = payload[0]?.value;
+  const feelsLike = payload[1]?.value;
 
   return (
     <div className="rounded-lg border bg-background p-2 shadow-sm">
@@ -55,21 +52,22 @@ const CustomTooltip = ({ active, payload }: any) => {
 
 // Main component for rendering hourly temperature chart
 export const HourlyTemperature = memo(({ data }: HourlyTemperatureProps) => {
-  // Take next 8 hours
+  // Take next 8 3-hr intervals
   const chartData: ChartData[] = data.list.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"), // format timestamp
-    temp: Math.round(item.main.temp),             
-    feels_like: Math.round(item.main.feels_like), 
+    temp: Math.round(item.main.temp * 9 / 5 + 32),             
+    feels_like: Math.round(item.main.feels_like * 9 / 5 + 32), 
   }));
 
   return (
-    <Card className="flex-1">
-      <CardHeader>
+    <Card className="flex-1 max-w-2xl">
+      <CardHeader className="flex items-baseline gap-2">
         <CardTitle>Today's Temperature</CardTitle>
+        <p className="text-xs text-muted-foreground">(Next ~24 hours)</p>
       </CardHeader>
 
       <CardContent>
-        <div className="h-[200px] w-full">
+        <div className="h-[140px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <XAxis
@@ -113,4 +111,3 @@ export const HourlyTemperature = memo(({ data }: HourlyTemperatureProps) => {
 });
 
 HourlyTemperature.displayName = "HourlyTemperature";
-
