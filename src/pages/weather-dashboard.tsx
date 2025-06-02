@@ -85,7 +85,7 @@ if (!weatherQuery.data || !forecastQuery.data) {
 }
 
 return (
-    <div className="space-y-4">
+    <div className="space-y-4 overflow-hidden">
       {/* Favorite Cities */}
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My Current Location</h1>
@@ -101,8 +101,8 @@ return (
       </div>
 
       {/* current and hrly weather */}
-      <div className="grid gap-6">
-        <div className="flex flex-col lg:flex-row gap-4">
+      <div className="grid gap-6 overflow-hidden">
+        <div className="flex flex-col lg:flex-row gap-4 overflow-hidden">
           <CurrentWeather
             data={weatherQuery.data}
             locationName={locationName}

@@ -21,15 +21,31 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
+    // <QueryClientProvider client={queryClient}>
+    //   <BrowserRouter>
+    //     <ThemeProvider defaultTheme='dark'>
+    //       <Layout>
+    //         <Routes>
+    //           <Route path="/" element={<WeatherDashboard />} />
+    //           <Route path="/city/:cityName" element={<CityPage />} />
+    //         </Routes>
+    //       </Layout>
+    //     </ThemeProvider>
+    //   </BrowserRouter>
+    //   <ReactQueryDevtools initialIsOpen={false} />
+    // </QueryClientProvider> 
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ThemeProvider defaultTheme='dark'>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<WeatherDashboard />} />
-              <Route path="/city/:cityName" element={<CityPage />} />
-            </Routes>
-          </Layout>
+          {/* Root container to cover full screen and disable scrolling */}
+          <div className="h-screen w-screen overflow-hidden">
+            <Layout>
+              <Routes>
+                <Route path="/" element={<WeatherDashboard />} />
+                <Route path="/city/:cityName" element={<CityPage />} />
+              </Routes>
+            </Layout>
+          </div>
         </ThemeProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
