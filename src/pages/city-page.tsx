@@ -6,6 +6,7 @@ import { useForecastQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { AlertTriangle } from "lucide-react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { WeatherInfo} from "../components/weather-info";
+import { WeatherForecast } from "../components/weather-forecast";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "@/api/weather"; // adjust path if different
 
@@ -67,9 +68,10 @@ const CityPage = () => {
           <CurrentWeather data={current} />
           <HourlyTemperature data={hourly} />
         </div>
-        <div className="grid gap-6 md:grid-cols-2 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 overflow-hidden">
           {/* extra weather info */}
           <WeatherInfo data={current} uvi={uvIndex} />
+          <WeatherForecast data={hourly} />
         </div>
       </section>
     </main>

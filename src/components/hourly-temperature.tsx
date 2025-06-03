@@ -60,7 +60,7 @@ export const HourlyTemperature = memo(({ data }: HourlyTemperatureProps) => {
   }));
 
   return (
-    <Card className="flex-1 max-w-2xl">
+    <Card className="flex-1 max-w-3xl">
       <CardHeader className="flex items-baseline gap-2">
         <CardTitle>Today's Temperature</CardTitle>
         <p className="text-xs text-muted-foreground">(Next ~24 hours)</p>

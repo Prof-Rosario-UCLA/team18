@@ -45,7 +45,7 @@
   --radius: 0.625rem;
   --background: oklch(0.97 0.014 57);
   --foreground: oklch(0.5 0.054 18);
-  --card: oklch(0.99 0.012 164); /* prev color was a soft pink: oklch(0.94 0.03 25);*/       
+  --card: oklch(0.99 0.012 164); /* prev color was soft pink: oklch(0.94 0.03 25);*/       
   --card-foreground: oklch(0.5 0.054 18);
   --popover: oklch(0.22 0.03 45);
   --popover-foreground: oklch(0.5 0.054 18);
@@ -53,12 +53,12 @@
   --primary-foreground: oklch(0.5 0.054 18);
   --secondary: oklch(0.33 0.04 50);      
   --secondary-foreground: oklch(0.5 0.054 18);
-  --muted: oklch(0.9113 0.06 63.7);
+  --muted: oklch(0.9294 0.0506 0); /* prev color was peach: oklch(0.9113 0.06 63.7); */
   --muted-foreground:oklch(0.69 0.054 18);
   --accent: oklch(0.36 0.05 65);           
   --accent-foreground: oklch(0.5 0.054 18);
   --destructive: oklch(0.5 0.054 18); 
-  --border: oklch(0.95 0.038 80);         
+  --border: oklch(0.5 0.054 18 / 25%);        
   --input: oklch(0.5 0.054 18);
   --ring: oklch(0.6 0.02 50);
   --chart-1: oklch(0.94 0.03 25);          
