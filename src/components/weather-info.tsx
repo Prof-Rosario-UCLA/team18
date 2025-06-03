@@ -52,7 +52,7 @@ export function WeatherInfo({ data, uvi }: WeatherInfoProps) {
   ];
 
   return (
-    <Card className="flex-1 w-full max-w-xl h-[300px]">
+    <Card className="flex-1 w-full max-w-xl h-[280px]">
       <CardHeader>
         <CardTitle>Additional Weather Info</CardTitle>
       </CardHeader>
@@ -61,7 +61,7 @@ export function WeatherInfo({ data, uvi }: WeatherInfoProps) {
           {details.map((detail) => (
             <li
               key={detail.title}
-              className="flex items-center justify-between py-2.5"
+              className="flex items-center justify-between py-2"
             >
               <div className="flex items-center gap-2">
                 {detail.icon}

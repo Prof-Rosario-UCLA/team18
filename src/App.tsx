@@ -8,6 +8,7 @@ import CityPage from "./pages/city-page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { UserBanner } from './components/user-banner';
+import { Toaster } from "./components/ui/sonner";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ function App() {
               </Routes>
               <UserBanner/>
             </Layout>
+            <Toaster richColors />
           </div>
         </ThemeProvider>
       </BrowserRouter>

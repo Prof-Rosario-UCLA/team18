@@ -50,7 +50,7 @@ export function WeatherForecast({ data }: WeatherForecastProps) {
   const forecastDays = Object.values(dailyByDate).slice(0, 6);
 
   return (
-    <Card className="flex-1 max-w-xl h-[300px] overflow-auto">
+    <Card className="flex-1 max-w-xl h-[280px] overflow-auto">
       <CardHeader>
         <CardTitle>Upcoming Forecast</CardTitle>
       </CardHeader>

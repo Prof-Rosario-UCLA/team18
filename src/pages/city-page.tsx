@@ -8,7 +8,8 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { WeatherInfo} from "../components/weather-info";
 import { WeatherForecast } from "../components/weather-forecast";
 import { useState, useEffect } from "react";
-import { weatherAPI } from "@/api/weather"; // adjust path if different
+import { weatherAPI } from "@/api/weather";
+import { FavoriteButton } from "@/components/fav-button";
 
 const CityPage = () => {
   // Get city name from URL path param
@@ -57,9 +58,16 @@ const CityPage = () => {
 
   // Render weather data
   return (
-    <main className="space-y-5 px-2">
+    <main className="space-y-2 px-2">
       <header className="flex justify-between items-center">
-        <h1 className="text-xl font-bold tracking-tight capitalize">{cityName}</h1>
+        <h1 className="text-xl font-bold tracking-tight capitalize">
+          {cityName}, {current.sys.country}
+        </h1>
+        <div className="flex gap-2">
+          <FavoriteButton
+            data={{ ...current, name: cityName }}
+          />
+        </div>
       </header>
 
       <section className="grid gap-5">

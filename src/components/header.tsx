@@ -55,7 +55,7 @@ const Header = () => {
                 <div>
               <Button 
                 onClick={googleLogin}
-                className="bg-chart-1 hover:bg-muted-foreground text-foreground"
+                className="bg-chart-1 hover:bg-chart-3 text-foreground"
                 >
                   Register!
               </Button> 

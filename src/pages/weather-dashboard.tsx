@@ -10,7 +10,7 @@ import { WeatherInfo} from "../components/weather-info";
 import { WeatherForecast } from "../components/weather-forecast";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "@/api/weather.ts";
-// import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { FavoriteCities } from "@/components/favorites";
 
 const WeatherDashboard = () => {
 const { coordinates, error: locationError, getLocation, isLoading: locationLoading } = useGeolocation();
@@ -104,7 +104,7 @@ if (!weatherQuery.data || !forecastQuery.data) {
 
 return (
     <div className="space-y-4 overflow-hidden">
-      {/* favorite cities */}
+      {/* <FavoriteCities /> */}
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My Current Location</h1>
           <Button 
@@ -118,20 +118,26 @@ return (
           </Button>
       </div>
 
-      {/* current and hrly weather */}
-      <div className="grid gap-6 overflow-hidden">
-        <div className="flex flex-col lg:flex-row gap-4 overflow-hidden">
-          <CurrentWeather
-            data={weatherQuery.data}
-            locationName={locationName}
-          />
-          <HourlyTemperature data={forecastQuery.data} />
+      <div className="grid lg:grid-cols-[1fr_300px] gap-6 mx-auto">
+        {/* Left side: stacked two rows */}
+        <div className="grid gap-6">
+          <div className="flex flex-col lg:flex-row gap-4">
+            <CurrentWeather
+              data={weatherQuery.data}
+              locationName={locationName}
+            />
+            <HourlyTemperature data={forecastQuery.data} />
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-4">
+            <WeatherInfo data={weatherQuery.data} uvi={uvIndex} />
+            <WeatherForecast data={forecastQuery.data} />
+          </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 overflow-hidden">
-          {/* extra weather info */}
-          <WeatherInfo data={weatherQuery.data} uvi={uvIndex} />
-          <WeatherForecast data={forecastQuery.data} />
+        {/* Right side: Favorites card spans both rows */}
+        <div className="lg:row-span-2 overflow-auto">
+          <FavoriteCities />
         </div>
       </div>
     </div>
@@ -139,35 +145,3 @@ return (
 };
 
 export default WeatherDashboard
-
-      // <div className="grid lg:grid-cols-[1fr_300px] gap-6 mx-auto">
-      //   {/* Left side: stacked two rows */}
-      //   <div className="grid gap-6">
-      //     <div className="flex flex-col lg:flex-row gap-4">
-      //       <CurrentWeather
-      //         data={weatherQuery.data}
-      //         locationName={locationName}
-      //       />
-      //       <HourlyTemperature data={forecastQuery.data} />
-      //     </div>
-
-      //     <div className="flex flex-col lg:flex-row gap-4">
-      //       <WeatherInfo data={weatherQuery.data} uvi={uvIndex} />
-      //       <WeatherForecast data={forecastQuery.data} />
-      //     </div>
-      //   </div>
-
-      //   {/* Right side: Favorites card spans both rows */}
-      //   <Card className="h-full bg-chart-1">
-      //     <CardHeader>
-      //       <CardTitle>Favorite Cities</CardTitle>
-      //     </CardHeader>
-      //     <CardContent>
-      //       <ul className="space-y-2">
-      //         <li>🌆 New York - 70° Clear</li>
-      //         <li>🌉 San Francisco - 65° Fog</li>
-      //         <li>🌃 Tokyo - 72° Cloudy</li>
-      //       </ul>
-      //     </CardContent>
-      //   </Card>
-      // </div>
