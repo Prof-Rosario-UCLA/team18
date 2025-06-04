@@ -51,7 +51,7 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-8">
-              { !currUser ? (
+              { !currUser && !user ? (
                 <div>
               <Button 
                 onClick={googleLogin}

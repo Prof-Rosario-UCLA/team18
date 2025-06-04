@@ -88,7 +88,10 @@ if (weatherQuery.error || forecastQuery.error) {
       <AlertTriangle className="h-4 w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription className="flex flex-col gap-4">
-        <p>Failed weather data fetch, please try again.</p>
+        {/* if offline, display fetching message  */}
+        { navigator.onLine ? (
+          <p>Failed weather data fetch, please try again.</p>
+        ) : (<p>You are currently offline. Attempting to fetch data...</p>) }
         <Button variant="outline" onClick={handleRefresh} className="w-fit">
           <RefreshCw className="mr-2 h-4 w-4" />
           Retry
