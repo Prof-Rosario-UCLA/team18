@@ -24,7 +24,7 @@ COPY . .
 # Build your app if you have a build step
 RUN npm run build
 
-EXPOSE 80
+EXPOSE 3000
 
 # Start your server
 CMD ["node", "src/server.js"]
