@@ -14,6 +14,9 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 - TanStack Query
 - Recharts
 
+**Backend:**
+- Node.js + Express
+
 ---
 
 ## 📡 APIs Used
