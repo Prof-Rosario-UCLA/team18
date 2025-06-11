@@ -21,7 +21,7 @@ A modern weather dashboard built with React, TypeScript, Tailwind, Shadcn, and T
 
 ## 📡 APIs Used
 
-- [OpenWeatherMap API](https://openweathermap.org/api) – for current weather, cloud cover, sunrise/sunset, and location data.
+- [OpenWeatherMap API + Geolocation API](https://openweathermap.org/api) – for current weather, cloud cover, sunrise/sunset, and location data.
 - [Current UV Index API](https://currentuvindex.com) – for real-time UV index data by coordinates.
 
 ---
