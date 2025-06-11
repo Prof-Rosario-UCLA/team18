@@ -24,8 +24,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// app.use(express.static("static"));
-app.use(express.static("."));
+app.use(express.static("static"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
