@@ -39,11 +39,28 @@ export function useGeolocation() {
       },
       (error) => {
         let errorMessage: string;
+        let fallbackCoordinates = null;
 
+        // switch (error.code) {
+        //   case error.PERMISSION_DENIED:
+        //     errorMessage =
+        //       "Location permission denied. Please enable location access.";
+        //     break;
+        //   case error.POSITION_UNAVAILABLE:
+        //     errorMessage = "Location information is unavailable.";
+        //     break;
+        //   case error.TIMEOUT:
+        //     errorMessage = "Location request timed out.";
+        //     break;
+        //   default:
+        //     errorMessage = "An unknown error occurred.";
+        // }
         switch (error.code) {
           case error.PERMISSION_DENIED:
             errorMessage =
-              "Location permission denied. Please enable location access.";
+              "Location permission denied. Showing default location.";
+            // Set fallback coordinates, e.g., New York City
+            fallbackCoordinates = { lat: 40.7128, lon: -74.006 };
             break;
           case error.POSITION_UNAVAILABLE:
             errorMessage = "Location information is unavailable.";
@@ -52,8 +69,8 @@ export function useGeolocation() {
             errorMessage = "Location request timed out.";
             break;
           default:
-            errorMessage = "An unknown error occurred.";
-        }
+        errorMessage = "An unknown error occurred.";
+    }
 
         setLocationData({
           coordinates: null,
