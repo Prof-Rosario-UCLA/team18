@@ -24,8 +24,7 @@ COPY . .
 # Build your app if you have a build step
 RUN npm run build
 
-# Expose the port your app listens on (adjust if different)
-EXPOSE 3000
+EXPOSE 80
 
 # Start your server
 CMD ["node", "src/server.js"]
