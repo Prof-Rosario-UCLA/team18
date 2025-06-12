@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: lunite
-          image: gcr.io/cs144-25s-kimberlyyu-458421/lunite:$GITHUB_SHA
+          image: us-west1-docker.pkg.dev/cs144-25s-kimberlyyu-458421/lunite/lunite:$GITHUB_SHA
           ports:
             - containerPort: 80
 ---
